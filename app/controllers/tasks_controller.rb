@@ -1,36 +1,36 @@
 class TasksController < ApplicationController
 
-  # GET: /tasks_controllers
-  get "/" do
+  # GET: /tasks
+  get "/tasks" do
     erb :"/tasks/index"
   end
 
-  # GET: /tasks_controllers/new
+  # GET: /tasks/new
   get "/tasks/new" do
     erb :"/tasks/new"
   end
 
-  # POST: /tasks_controllers
+  # POST: /tasks
   post "/tasks" do
-    redirect "/tasks"
+    redirect "/tasks/#{task.id}"
   end
 
-  # GET: /tasks_controllers/5
+  # GET: /tasks/5
   get "/tasks/:id" do
     erb :"/tasks/show"
   end
 
-  # GET: /tasks_controllers/5/edit
+  # GET: /tasks/5/edit
   get "/tasks/:id/edit" do
     erb :"/tasks/edit"
   end
 
-  # PATCH: /tasks_controllers/5
+  # PATCH: /tasks/5
   patch "/tasks/:id" do
-    redirect "/tasks/:id"
+    erb :"/tasks/show"
   end
 
-  # DELETE: /tasks_controllers/5/delete
+  # DELETE: /tasks/5/delete
   delete "/tasks/:id/delete" do
     redirect "/tasks"
   end
