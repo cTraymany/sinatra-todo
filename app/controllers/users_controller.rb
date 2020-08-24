@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   get "/signup" do
     erb :"/users/signup"
   end
+  
+  post "/signup" do
+    binding.pry
+    redirect "/users/#{user.id}"
+  end
 
   # GET: /login
   get "/login" do
@@ -12,11 +17,6 @@ class UsersController < ApplicationController
 
   # POST: /index after signing up or logging in
   post "/login" do
-    redirect "/users/#{user.id}"
-  end
-
-  post "/signup" do
-    
     redirect "/users/#{user.id}"
   end
 
