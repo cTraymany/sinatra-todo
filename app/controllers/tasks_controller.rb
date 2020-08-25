@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
   get "/tasks/:id/edit" do
     redirect_if_not_logged_in
+    # check user && QC against bad id
     @task = Task.find_by(id:params[:id])
     erb :"/tasks/edit"
   end
