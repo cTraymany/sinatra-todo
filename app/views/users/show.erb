@@ -1,1 +1,17 @@
-user id show
+<h3>Welcome, <%= @user.username %>!</h3>
+<p><em>Your tasks for the day -</em></p>
+
+
+
+
+</form>
+    <% @tasks.each do |task| %>
+            <input type='checkbox'><%= task.task_descr %></input>
+    <% end %>
+    <br><br>
+        <input type='submit'>
+</form>
+
+
+
+<br><br>
