@@ -2,9 +2,9 @@
 
 Specs:
 - [x] Use Sinatra to build the app
-    <!--  -->
+    <!-- Uses Sinatra to built http requests -->
 - [x] Use ActiveRecord for storing information in a database
-    <!--  -->
+    <!-- Uses ActiveRecord to create tables -->
 - [x] Include more than one model class (e.g. User, Post, Category)
     <!-- 1)User and 2)Task model -->
 - [x] Include at least one has_many relationship on your User model (e.g. User has_many Posts)
