@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  # GET: /signup
   get "/signup" do
     redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/signup"
@@ -18,13 +17,11 @@ class UsersController < ApplicationController
     end
   end
   
-  # GET: /login
   get "/login" do
     redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/login"
   end
   
-  # POST: /index after signing up or logging in
   post "/login" do
     user = User.find_by(email:params[:email])
     if user && user.authenticate(params[:password])
@@ -36,11 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-# 
-# 
-# RESUME HERE
-# 
-# 
   get '/users' do
     redirect_if_not_logged_in
     @users = User.all
