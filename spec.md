@@ -22,7 +22,11 @@ Specs:
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
-- [ ] You have a large number of small Git commits
+- [x] You have a large number of small Git commits
+    <!-- At least 50 commits under 15 lines -->
 - [x] Your commit messages are meaningful
+    <!-- Descriptive commit messages -->
 - [x] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+    <!-- Each commit describes actions taken -->
+- [x] You don't include changes in a commit that aren't related to the commit message
+    <!-- Each commit describes actions taken -->
