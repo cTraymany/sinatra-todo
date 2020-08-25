@@ -2,46 +2,50 @@ class UsersController < ApplicationController
 
   # GET: /signup
   get "/signup" do
-    user = current_user
-    redirect "/users/#{user.id}" if logged_in?
+    # redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/signup"
   end
   
   post "/signup" do
-    # user = User.new(params)
-    # user.save if user.valid?
-    # authenticate user && encrypt password
-    if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
-      user = User.create(params) #validate password before this line
+    # encrypt password
+    user = User.new(params)
+    if user.valid?
+      user.save
       session[:user_id] = user.id
     # else
-    #   "log in"
       # add an error message saying user needs valid log in
     end
     redirect "/users/#{user.id}"
   end
-
+  
   # GET: /login
   get "/login" do
-    user = User.find_by(session[:user_id])
-    redirect "/users/#{user.id}" if logged_in?
+    # redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/login"
   end
-
+  
   # POST: /index after signing up or logging in
   post "/login" do
     user = User.find_by(params[:username])
     if user && user.authenticate(params[:password])
+      binding.pry
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
       redirect '/login'
+      # put error message invalid login
     end
   end
 
+# 
+# 
+# RESUME HERE
+# 
+# 
+
   # GET: /users/5 shows user page
   get "/users/:id" do
-    redirect_if_not_logged_in
+    # redirect_if_not_logged_in
     @user = current_user
     @tasks = @user.tasks
 
