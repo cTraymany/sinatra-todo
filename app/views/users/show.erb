@@ -11,8 +11,7 @@
         <a href='/logout'><input type='submit' value='Logout'></a><br><br>
     </form>
 <% else %>
-    <h3><%= @user.username %> || <a href='/users'>View All Users</a></h3>
-    <p>Their tasks for the day -</p>
+    <h3><%= @user.username %>'s Tasks || <a href='/users'>View All Users</a></h3>
     <form action='/logout'>
         <% @tasks.each do |task| %>
             <ul>
