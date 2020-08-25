@@ -10,6 +10,11 @@ class TasksController < ApplicationController
     erb :"/tasks/new"
   end
 
+  post "/tasks" do
+    task = Task.create(task_descr:params[:description], user_id:current_user.id)
+    redirect "users/#{task.user_id}"
+  end
+
   # POST: /tasks
   post "/tasks" do
     redirect "/tasks/#{task.id}"
