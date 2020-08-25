@@ -67,6 +67,8 @@ class UsersController < ApplicationController
     else
       redirect "/users/#{current_user.id}/edit"
     end
+
+    # write a conditional to reflect when a user is viewing their own page or another's
   end
 
   # PATCH: /users/5 edit user page
