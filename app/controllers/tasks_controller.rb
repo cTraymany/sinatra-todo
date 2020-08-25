@@ -11,13 +11,6 @@ class TasksController < ApplicationController
     redirect "users/#{task.user_id}"
   end
 
-  get "/tasks/:id" do
-    redirect_if_not_logged_in
-    # task show page -- maybe delete this one
-    # binding.pry
-    erb :"/tasks/show"
-  end
-
   get "/tasks/:id/edit" do
     redirect_if_not_logged_in
     @task = Task.find_by(id:params[:id])
