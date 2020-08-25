@@ -1,1 +1,19 @@
-task edit form
+<h3>Edit task</h3>
+
+<form method='post' action='/tasks/<%= @task.id %>'>
+    <input type='text' name='description' value='<%= @task.task_descr %>'>
+    <br><br>
+    <input type='hidden' name='_method' value='patch'>
+    <input type='submit' value='edit'>
+</form>
+
+<br>
+
+<form method='post' action='/tasks/<%= @task.id %>'>
+    <input type='hidden' name='_method' value='delete'>
+    <input type='submit' value='delete'>
+</form>
+
+
+
+<br><br>

@@ -1,1 +1,5 @@
-<h1>This is the user's index page.</h1>
+<p><em>Click on a user below to view their tasks -</em></p>
+
+<% @users.each do |user| %>
+    <p><a href='users/<%= user.id %>'><%= user.username %></a></p>
+<% end %>

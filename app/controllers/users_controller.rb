@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   # POST: /index after signing up or logging in
   post "/login" do
     user = User.find_by(email:params[:email])
-    binding.pry
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
@@ -42,13 +41,17 @@ class UsersController < ApplicationController
 # RESUME HERE
 # 
 # 
+  get '/users' do
+    @users = User.all
+    erb :"/users/index"
+  end
 
   # GET: /users/5 shows user page
   get "/users/:id" do
     # redirect_if_not_logged_in
     @user = User.find_by(id:params[:id])
     @tasks = @user.tasks
-    # binding.pry
+
     erb :"/users/show"
 
     # how to make the boxes stay checked when page refresh
@@ -56,6 +59,7 @@ class UsersController < ApplicationController
     # if user on own page
       # add edit button
       # add delete button
+      # say "welcome, user!" else "user's tasks"
     
   end
 

@@ -23,16 +23,23 @@ class TasksController < ApplicationController
 
   # GET: /tasks/5/edit
   get "/tasks/:id/edit" do
+    @task = Task.find_by(id:params[:id])
     erb :"/tasks/edit"
   end
-
+  
   # PATCH: /tasks/5
   patch "/tasks/:id" do
-    erb :"/tasks/show"
+    task = Task.find_by(id:params[:id])
+    # binding.pry
+    task.task_descr = params[:description]
+    task.save
+    redirect "/users/#{task.user_id}"
   end
 
   # DELETE: /tasks/5/delete
-  delete "/tasks/:id/delete" do
-    redirect "/tasks"
+  delete "/tasks/:id" do
+    task = Task.find_by(id:params[:id])
+    task.delete
+    redirect "/users/#{task.user_id}"
   end
 end
