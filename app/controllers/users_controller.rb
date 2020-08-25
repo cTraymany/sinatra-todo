@@ -2,11 +2,13 @@ class UsersController < ApplicationController
 
   # GET: /signup
   get "/signup" do
+    redirect_if_not_logged_in
     redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/signup"
   end
   
   post "/signup" do
+    redirect_if_not_logged_in
     # encrypt password
     user = User.create(params)
     if user.valid?
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
   end
   
   # GET: /login
+  redirect_if_not_logged_in
   get "/login" do
     redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/login"
@@ -26,6 +29,7 @@ class UsersController < ApplicationController
   
   # POST: /index after signing up or logging in
   post "/login" do
+    redirect_if_not_logged_in
     user = User.find_by(email:params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -42,13 +46,14 @@ class UsersController < ApplicationController
 # 
 # 
   get '/users' do
+    redirect_if_not_logged_in
     @users = User.all
     erb :"/users/index"
   end
 
   # GET: /users/5 shows user page
   get "/users/:id" do
-    # redirect_if_not_logged_in
+    redirect_if_not_logged_in
     @user = User.find_by(id:params[:id])
     @tasks = @user.tasks
 
@@ -64,6 +69,7 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
+    redirect_if_not_logged_in
     session.clear
     redirect '/'
   end
