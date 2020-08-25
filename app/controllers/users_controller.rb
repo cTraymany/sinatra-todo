@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   # GET: /signup
   get "/signup" do
     # redirect "/users/#{self.current_user.id}" if logged_in?
+      # if you log out, and log back in as Gomez, check to see if this shows only Skittles
     erb :"/users/signup"
   end
   
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
   # GET: /login
   get "/login" do
     # redirect "/users/#{self.current_user.id}" if logged_in?
+      # if you log out, and log back in as Gomez, check to see if this shows only Skittles
     erb :"/users/login"
   end
   
@@ -28,7 +30,6 @@ class UsersController < ApplicationController
   post "/login" do
     user = User.find_by(params[:username])
     if user && user.authenticate(params[:password])
-      binding.pry
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
@@ -46,16 +47,20 @@ class UsersController < ApplicationController
   # GET: /users/5 shows user page
   get "/users/:id" do
     # redirect_if_not_logged_in
-    @user = current_user
+    @user = User.find_by(id:params[:id])
     @tasks = @user.tasks
-
-    # make this a checkbox
-
     erb :"/users/show"
+
+
+    # if user on own page
+      # add edit button
+      # add delete button
+    
   end
 
   # GET: /users/5/edit shows user edit page
   get "/users/:id/edit" do
+    # should only show this page if user == current_user
     erb :"/users/edit"
   end
 
