@@ -2,33 +2,32 @@ class UsersController < ApplicationController
 
   # GET: /signup
   get "/signup" do
-    # redirect "/users/#{self.current_user.id}" if logged_in?
-      # if you log out, and log back in as Gomez, check to see if this shows only Skittles
+    redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/signup"
   end
   
   post "/signup" do
     # encrypt password
-    user = User.new(params)
+    user = User.create(params)
     if user.valid?
-      user.save
       session[:user_id] = user.id
-    # else
+      redirect "/users/#{user.id}"
+    else
+      redirect '/signup'
       # add an error message saying user needs valid log in
     end
-    redirect "/users/#{user.id}"
   end
   
   # GET: /login
   get "/login" do
-    # redirect "/users/#{self.current_user.id}" if logged_in?
-      # if you log out, and log back in as Gomez, check to see if this shows only Skittles
+    redirect "/users/#{self.current_user.id}" if logged_in?
     erb :"/users/login"
   end
   
   # POST: /index after signing up or logging in
   post "/login" do
-    user = User.find_by(params[:username])
+    user = User.find_by(email:params[:email])
+    binding.pry
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
@@ -49,8 +48,10 @@ class UsersController < ApplicationController
     # redirect_if_not_logged_in
     @user = User.find_by(id:params[:id])
     @tasks = @user.tasks
+    # binding.pry
     erb :"/users/show"
 
+    # how to make the boxes stay checked when page refresh
 
     # if user on own page
       # add edit button
@@ -58,26 +59,31 @@ class UsersController < ApplicationController
     
   end
 
-  # GET: /users/5/edit shows user edit page
-  get "/users/:id/edit" do
-    # only show this page if check_user, otherwise show current user edit page
-    user =  User.find_by(params)
-    if check_user(user)
-      erb :"/users/edit"
-    else
-      redirect "/users/#{current_user.id}/edit"
-    end
-
-    # write a conditional to reflect when a user is viewing their own page or another's
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 
-  # PATCH: /users/5 edit user page
-  patch "/users/:id" do
-    erb :"/users/show"
-  end
+  # # GET: /users/5/edit shows user edit page
+  # get "/users/:id/edit" do
+  #   # only show this page if check_user, otherwise show current user edit page
+  #   @user =  User.find_by(params)
+  #   @tasks = @user.tasks
+  #   if check_user(@user)
+  #     erb :"/users/edit"
+  #   else
+  #     redirect "/users/#{current_user.id}/edit"
+  #   end
+  #   # write a conditional to reflect when a user is viewing their own page or another's
+  # end
 
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/"
-  end
+  # # PATCH: /users/5 edit user page
+  # patch "/users/:id" do
+  #   erb :"/users/show"
+  # end
+
+  # # DELETE: /users/5/delete
+  # delete "/users/:id/delete" do
+  #   redirect "/"
+  # end
 end

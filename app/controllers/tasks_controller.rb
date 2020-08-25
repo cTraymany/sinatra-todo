@@ -17,6 +17,7 @@ class TasksController < ApplicationController
 
   # GET: /tasks/5
   get "/tasks/:id" do
+    # binding.pry
     erb :"/tasks/show"
   end
 
