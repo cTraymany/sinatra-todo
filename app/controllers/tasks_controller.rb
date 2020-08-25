@@ -14,12 +14,14 @@ class TasksController < ApplicationController
   end
 
   post "/tasks" do
+    redirect_if_not_logged_in
     task = Task.create(task_descr:params[:description], user_id:current_user.id)
     redirect "users/#{task.user_id}"
   end
 
   # POST: /tasks
   post "/tasks" do
+    redirect_if_not_logged_in
     redirect "/tasks/#{task.id}"
   end
 
@@ -40,6 +42,7 @@ class TasksController < ApplicationController
   
   # PATCH: /tasks/5
   patch "/tasks/:id" do
+    redirect_if_not_logged_in
     task = Task.find_by(id:params[:id])
     # binding.pry
     task.task_descr = params[:description]
@@ -49,6 +52,7 @@ class TasksController < ApplicationController
 
   # DELETE: /tasks/5/delete
   delete "/tasks/:id" do
+    redirect_if_not_logged_in
     task = Task.find_by(id:params[:id])
     task.delete
     redirect "/users/#{task.user_id}"
