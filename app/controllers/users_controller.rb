@@ -44,8 +44,6 @@ class UsersController < ApplicationController
     @tasks = @user.tasks
 
     erb :"/users/show"
-
-    # how to make the boxes stay checked when page refresh
   end
 
   get '/logout' do
