@@ -11,11 +11,6 @@ class TasksController < ApplicationController
     redirect "users/#{task.user_id}"
   end
 
-  post "/tasks" do
-    redirect_if_not_logged_in
-    redirect "/tasks/#{task.id}"
-  end
-
   get "/tasks/:id" do
     redirect_if_not_logged_in
     # task show page -- maybe delete this one

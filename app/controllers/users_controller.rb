@@ -46,12 +46,6 @@ class UsersController < ApplicationController
     erb :"/users/show"
 
     # how to make the boxes stay checked when page refresh
-
-    # if user on own page
-      # add edit button
-      # add delete button
-      # say "welcome, user!" else "user's tasks"
-    
   end
 
   get '/logout' do
