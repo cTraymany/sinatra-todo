@@ -1,9 +1,11 @@
 <% if @user == current_user %>
     <h3>Welcome, <%= @user.username %>! || <a href='/users'>View All Users</a></h3>
-    <p>Mark a task finished, click on a task to edit, or <a href='/tasks/new'>create</a> a new task -</p>
+    <p>Click on a task to edit, or <a href='/tasks/new'>create</a> a new task -</p>
     <form action='/logout'>
         <% @tasks.each do |task| %>
-            <input type='checkbox'><a href='/tasks/<%= task.id %>/edit'><%= task.task_descr %></a><br></input>
+            <ul>
+                <li><a href='/tasks/<%= task.id %>/edit'><%= task.task_descr %></a></li>
+            </ul>
         <% end %><br>
 
         <a href='/logout'><input type='submit' value='Logout'></a><br><br>

@@ -21,14 +21,14 @@ class TasksController < ApplicationController
     redirect_if_not_logged_in
     task = Task.find_by(id:params[:id])
     task.task_descr = params[:description]
-    task.save
+    task.save if task.user_id == current_user.id
     redirect "/users/#{task.user_id}"
   end
 
   delete "/tasks/:id" do
     redirect_if_not_logged_in
     task = Task.find_by(id:params[:id])
-    task.delete
+    task.delete if task.user_id == current_user.id
     redirect "/users/#{task.user_id}"
   end
 end
