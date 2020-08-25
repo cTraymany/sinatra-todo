@@ -40,13 +40,12 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     redirect_if_not_logged_in
-    if User.find_by(id:params[:id])
-      @user = User.find_by(id:params[:id])
+    if @user = User.find_by(id:params[:id])
       @tasks = @user.tasks
+      erb :"/users/show"
     else
       redirect '/users'
     end
-    erb :"/users/show"
   end
 
   get '/logout' do
