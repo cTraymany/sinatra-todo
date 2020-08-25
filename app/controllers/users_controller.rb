@@ -60,8 +60,13 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit shows user edit page
   get "/users/:id/edit" do
-    # should only show this page if user == current_user
-    erb :"/users/edit"
+    # only show this page if check_user, otherwise show current user edit page
+    user =  User.find_by(params)
+    if check_user(user)
+      erb :"/users/edit"
+    else
+      redirect "/users/#{current_user.id}/edit"
+    end
   end
 
   # PATCH: /users/5 edit user page
