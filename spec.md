@@ -13,7 +13,8 @@ Specs:
     <!-- Task belongs to user -->
 - [x] Include user accounts with unique login attribute (username or email)
     <!-- Uses activerecord to validate login info and bcrypt to encrypt password -->
-- [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+- [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+    <!-- Options to POST, GET, PATCH, and DELETE tasks -->
 - [x] Ensure that users can't modify content created by other users
     <!-- Uses conditions in forms to prevent editing others' task forms -->
 - [x] Include user input validations
