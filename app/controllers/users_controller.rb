@@ -2,10 +2,14 @@ class UsersController < ApplicationController
 
   # GET: /signup
   get "/signup" do
+    user = current_user
+    redirect "/users/#{user.id}" if logged_in?
     erb :"/users/signup"
   end
   
   post "/signup" do
+    # user = User.new(params)
+    # user.save if user.valid?
     # authenticate user && encrypt password
     if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       user = User.create(params) #validate password before this line
@@ -37,6 +41,7 @@ class UsersController < ApplicationController
 
   # GET: /users/5 shows user page
   get "/users/:id" do
+    redirect_if_not_logged_in
     @user = current_user
     @tasks = @user.tasks
 
