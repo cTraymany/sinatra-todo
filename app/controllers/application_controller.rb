@@ -23,15 +23,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def redirect_if_not_logged_in
-      redirect '/' if !logged_in
-    end
-
-    def check_user(user)
-      user == current_user
-    end
-
-    def check_task(task)
-      task.user == current_user
+      redirect '/' if !logged_in?
     end
   end
 
