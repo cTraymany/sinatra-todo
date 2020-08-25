@@ -60,27 +60,4 @@ class UsersController < ApplicationController
     session.clear
     redirect '/'
   end
-
-  # # GET: /users/5/edit shows user edit page
-  # get "/users/:id/edit" do
-  #   # only show this page if check_user, otherwise show current user edit page
-  #   @user =  User.find_by(params)
-  #   @tasks = @user.tasks
-  #   if check_user(@user)
-  #     erb :"/users/edit"
-  #   else
-  #     redirect "/users/#{current_user.id}/edit"
-  #   end
-  #   # write a conditional to reflect when a user is viewing their own page or another's
-  # end
-
-  # # PATCH: /users/5 edit user page
-  # patch "/users/:id" do
-  #   erb :"/users/show"
-  # end
-
-  # # DELETE: /users/5/delete
-  # delete "/users/:id/delete" do
-  #   redirect "/"
-  # end
 end
