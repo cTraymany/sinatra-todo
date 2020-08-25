@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
   
   post "/signup" do
-    # encrypt password
     user = User.create(params)
     if user.valid?
       session[:user_id] = user.id
@@ -39,7 +38,6 @@ class UsersController < ApplicationController
     erb :"/users/index"
   end
 
-  # GET: /users/5 shows user page
   get "/users/:id" do
     redirect_if_not_logged_in
     @user = User.find_by(id:params[:id])
