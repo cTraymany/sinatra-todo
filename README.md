@@ -10,8 +10,12 @@ This app is run with Ruby. Please have Ruby installed before beginning.
 Fork and clone this repository onto your terminal.
 
 ### Installing
+    $ git clone git@github.com:cTraymany/sinatra-todo.git
     $ bundle install
-    $ rake db:migrate SINATRA_ENV=test
+    $ shotgun
+
+    Navigate to http://localhost:9393/ in your browser.
+    Don't forget to enter `CTRL+C` in your terminal when you are finished to exit Shotgun!
 
 ### Built With
 [VS Code](https://code.visualstudio.com/) - text editor
