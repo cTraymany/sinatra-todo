@@ -10,12 +10,12 @@ This app is run with Ruby. Please have Ruby installed before beginning.
 Fork and clone this repository onto your terminal.
 
 ### Installing
-    $ git clone git@github.com:cTraymany/sinatra-todo.git
-    $ bundle install
-    $ shotgun
+    `$ git clone git@github.com:cTraymany/sinatra-todo.git`
+    `$ bundle install`
+    `$ shotgun`
 
     Navigate to http://localhost:9393/ in your browser.
-    
+
     When you are finished, don't forget to enter `CTRL+C` in your terminal to exit Shotgun!
 
 ### Built With
