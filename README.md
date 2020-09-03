@@ -15,7 +15,7 @@ Fork and clone this repository onto your terminal.
     $ shotgun
 
     Navigate to http://localhost:9393/ in your browser.
-    Don't forget to enter `CTRL+C` in your terminal when you are finished to exit Shotgun!
+    When you are finished, don't forget to enter `CTRL+C` in your terminal to exit Shotgun!
 
 ### Built With
 [VS Code](https://code.visualstudio.com/) - text editor
