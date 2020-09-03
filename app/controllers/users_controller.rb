@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect "/users/#{user.id}"
     else
       redirect '/signup'
-      # add an error message saying user needs valid log in
+      # optional flash message
     end
   end
   
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       redirect "/users/#{user.id}"
     else
       redirect '/login'
-      # put error message invalid login
+      # optional flash message
     end
   end
 
