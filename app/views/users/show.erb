@@ -12,13 +12,14 @@
     </form>
 <% else %>
     <h3><%= @user.username %>'s Tasks || <a href='/users'>View All Users</a></h3>
+   
+    <% @tasks.each do |task| %>
+        <ul>
+            <li><%= task.task_descr %><br></li>
+        </ul>
+    <% end %>
+        
     <form action='/logout'>
-        <% @tasks.each do |task| %>
-            <ul>
-                <li><%= task.task_descr %><br></li>
-            </ul>
-        <% end %>
-    
         <a href='/logout'><input type='submit' value='Logout'></a><br><br>
     </form>
 <% end %>
