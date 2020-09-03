@@ -6,9 +6,6 @@
             <li><a href='/tasks/<%= task.id %>/edit'><%= task.task_descr %></a></li>
         </ul>
     <% end %><br>
-    <form action='/logout'>
-        <a href='/logout'><input type='submit' value='Logout'></a><br><br>
-    </form>
 <% else %>
     <h3><%= @user.username %>'s Tasks || <a href='/users'>View All Users</a></h3>
    
@@ -17,9 +14,9 @@
             <li><%= task.task_descr %><br></li>
         </ul>
     <% end %>
+<% end %>
         
     <form action='/logout'>
         <a href='/logout'><input type='submit' value='Logout'></a><br><br>
     </form>
-<% end %>
 
