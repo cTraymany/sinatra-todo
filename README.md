@@ -13,7 +13,6 @@ Fork and clone this repository onto your terminal.
     $ git clone git@github.com:cTraymany/sinatra-todo.git
     $ bundle install
     $ rake db:migrate
-    $ rake db:seed
     $ shotgun
 
     Navigate to http://localhost:9393/ in your browser.
