@@ -1,0 +1,14 @@
+<h2>Error!</h2>
+
+
+<% if @error_message.include?("Password can't be blank") %>
+    <p>Please enter a valid password.</p>
+<% end %>
+
+<form method='post' action='/signup'>
+    Email: <input type='text' name='email'><br><br>
+    Username: <input type='text' name='username'><br><br>
+    Password: <input type='password' name='password'><br><br>
+
+    <input type='submit' value='Create User!'><br><br>
+</form>

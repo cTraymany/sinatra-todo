@@ -11,7 +11,9 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
-      redirect '/signup'
+      # binding.pry
+      @error_message = user.errors.full_messages
+      erb :signup_error
       # optional flash message
     end
   end
@@ -27,9 +29,13 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
-      redirect '/login'
+      redirect '/error'
       # optional flash message
     end
+  end
+
+  get '/error' do
+    erb :error
   end
 
   get '/users' do
