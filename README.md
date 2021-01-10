@@ -1,6 +1,6 @@
 # Sinatra Todo Web App
 
-This Sinatra web app allows multiple users to create todo lists.
+This Sinatra web app allows multiple users to create todo lists. Safely create an account to keep track of your chores! We use BCrypt to encrypt user passwords. Take note of important details with the option to add a description to each task! Tasks are stored in a database created with SQLite3.
 
 
 ## Getting Started
